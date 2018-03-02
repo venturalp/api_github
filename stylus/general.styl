@@ -14,7 +14,6 @@ reset('all')
 *, *::after, *::before      
 	box-sizing border-box 	
 	font-weight 300
-	transition all 0.2s ease
 	
 html
 	height 100%
@@ -25,10 +24,17 @@ body
 	overflow-x hidden
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
+	font-family 'Oxygen', sans-serif
+	background-color $light-txt
+	+below($content)
+		background-color #fff
 	
 .content
 	width $content
 	margin 0 auto
+	background-color #fff
+	+below($content)
+		width 100%		
 
 select::-ms-expand {
     display: none;
@@ -36,3 +42,141 @@ select::-ms-expand {
 
 .ng-cloak
 	display none !important
+	
+.btn
+	padding 20px 35px
+	color #fff
+	border 1px solid $txt
+	background-color $txt
+	cursor pointer
+	display inline-block
+	&:hover
+		background-color $light-txt
+		color #000
+	
+header
+	& .content
+		display table
+		&>div
+			display table-cell
+			vertical-align middle
+			text-align center
+			& img
+				max-width 100%
+			& h1
+				color #000
+				set-font-size(44px)
+				font-weight bold
+				text-align center
+		+below(960px)
+			&>div
+				& h1
+					set-font-size(36px)
+		+below(690px)
+			display block
+			&>div
+				display block
+				&:last-child
+					padding 20px 0px
+					
+				
+.group-input
+	display table
+	&>div
+		display table-cell
+		vertical-align middle
+		&:first-child
+			width 100%
+		&.ico
+			padding 0px 5px
+			background-color $light-txt
+			border 1px solid #000
+			cursor pointer
+				
+#busca
+	padding 20px 0px
+	& input
+		width 100%
+		margin 0 auto
+		border 1px solid $txt
+		padding 10px
+		set-font-size(18px)
+		border-right 0px
+		&:focus
+			outline none
+			border-color $light-txt
+	& .group-input
+		width 80%
+		margin 0 auto	
+	+below(690px)
+		& .group-input
+			width 95%
+	
+		
+#home	
+	& .content
+		padding 50px 0px
+		set-font-size(40px)
+		text-align center
+		+below(690px)
+			padding 50px 20px
+			set-font-size(24px)
+		
+#resultado-busca
+	& .content
+		padding-left 5%
+		padding-right 5%
+		padding-bottom 50px
+	& #dados
+		display table
+		padding 50px 5%
+		&>div
+			display table-cell
+			vertical-align top
+			&:first-child
+				width 30%
+				& img
+					max-width 100%
+			&:last-child
+				padding-left 20px
+				color #000
+				line-height 1.4
+				& b
+					font-weight bold
+				& a
+					color #000
+					text-decoration none
+					&:hover
+						color $light-txt
+						text-decoration underline
+		+below(760px)
+			padding 50px 2.5%
+			&>div
+				&:first-child					
+					width 35%
+		+below(550px)
+			display block
+			&>div
+				display block		
+				&:first-child
+					width 100%
+					padding 0px 10px 10px
+					text-align center
+				&:last-child
+					set-font-size(15px)
+					padding 0px 2.5%
+	& .repos
+		padding-top 25px
+		word-break break-all
+		&>div
+			padding 10px 0px
+			border-bottom 1px solid $light-txt
+			line-height 1.3
+			set-font-size(17px)
+			& h2
+				color $txt
+				margin-bottom 6px
+				set-font-size(20px)
+			& b
+				font-weight bold
+				color $txt

@@ -1,0 +1,46 @@
+<section id="home" ng-if="!encontrado">
+	<article class="content">
+		Usuário não encontrado
+	</article>
+</section>
+<section id="resultado-busca" ng-if="encontrado">
+	<article class="content" id="dados">
+		<div>
+			<img ng-src="{{dados.avatar_url}}" alt="{{dados.login}}"/>
+		</div>
+		<div>
+			<b>Tipo: </b> {{dados.type}}<br>
+			<b>Compania: </b> {{dados.company == null?'N/A': dados.company}}<br>
+			<b>Blog: </b> <a ng-href="{{dados.blog}}" target="_blank">{{dados.blog == null?'N/A': dados.blog}}</a><br>
+			<b>Localização: </b> {{dados.location}}<br>
+			<b>Email: </b> <a ng-href="{{mailUrl(dados.email)}}">{{dados.email == null?'N/A': dados.email}}</a><br>
+			<b>Bio: </b> {{dados.bio == null?'N/A': dados.bio}}<br>
+			<b>Repositórios Públicos: </b> {{dados.public_repos == null?'N/A': dados.public_repos}}<br>
+			<b>Gists Públicos: </b> {{dados.public_gists == null?'N/A': dados.public_gists}}<br>
+			<b>Seguidores: </b> {{dados.followers == null?'N/A': dados.followers}}<br>
+			<b>Seguindo: </b> {{dados.following == null?'N/A': dados.following}}<br>
+		</div>
+	</article>
+	<article class="content">
+		<a class="btn" ng-click="getRepos()">Repositórios</a>		
+		<div class="repos">
+			<div ng-repeat="r in repos">	
+				<b>Nome: </b> {{r.name}}<br>
+				<b>Owner: </b> {{r.owner.login == null?'N/A': r.owner.login}}<br>
+				<b>Clone URL: </b> {{r.clone_url == null?'N/A': r.clone_url}}<br>
+				<h2><b>Descrição:</b> {{r.description}}</h2>
+			</div>
+		</div>
+	</article>
+	<article class="content">
+		<a class="btn" ng-click="getStarred()">Starred</a>
+		<div class="repos">
+			<div ng-repeat="s in starred">	
+				<b>Nome: </b> {{s.name}}<br>
+				<b>Owner: </b> {{s.owner.login == null?'N/A': s.owner.login}}<br>
+				<b>Clone URL: </b> {{s.clone_url == null?'N/A': s.clone_url}}<br>
+				<h2><b>Descrição:</b> {{s.description}}</h2>
+			</div>
+		</div>
+	</article>
+</section>

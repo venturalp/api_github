@@ -3,13 +3,26 @@ var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 var rupture = require('rupture');
 var stylus = require('gulp-stylus');
+var nodemon = require('gulp-nodemon');
 
-gulp.task('default', ['watch', 'comp-stylus']);
+gulp.task('default', ['run-server', 'watch', 'comp-stylus']);
 
 gulp.task('watch', function(){
 	gulp.watch('./stylus/*.styl', ['comp-stylus']);
 	gulp.watch('./css/*.css', ['minify-css']);
 });
+
+gulp.task('run-server', function () {	
+	nodemon({
+		script: 'server.js',
+		ext: 'js',
+		ignore: ['js/'],
+		env: {
+			'NODE_ENV': 'development'
+		}
+	});
+});
+
 
 gulp.task('minify-css', function () {
 	gulp.src('./css/general.css')

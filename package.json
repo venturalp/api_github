@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.9"
+    "angular": "^1.6.9",
+    "angular-ui-router": "^1.0.3",
+    "express": "^4.16.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
